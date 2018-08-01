@@ -48,7 +48,7 @@ class Main extends Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Ender's Game</div>
+                      <div className="book-title">Ender&#39;s Game</div>
                       <div className="book-authors">Orson Scott Card</div>
                     </div>
                   </li>
@@ -91,7 +91,7 @@ class Main extends Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Harry Potter and the Sorcerer's Stone</div>
+                      <div className="book-title">Harry Potter and the Sorcerer&#39;s Stone</div>
                       <div className="book-authors">J.K. Rowling</div>
                     </div>
                   </li>
@@ -134,7 +134,7 @@ class Main extends Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">Oh, the Places You'll Go!</div>
+                      <div className="book-title">Oh, the Places You&#39;ll Go!</div>
                       <div className="book-authors">Seuss</div>
                     </div>
                   </li>
