@@ -6,6 +6,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends Component {
+
   state = {
 
     books: []
@@ -16,10 +17,11 @@ class BooksApp extends Component {
      this.getBooks()
    }
 
-  getBooks() {
-  BooksAPI.getAll().then((books) => {
-    this.setState({ books })
-    console.log(this.state.books)
+  // loads books from the BooksAPI
+  getBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+      // console.log(this.state.books)
     })
   }
 
@@ -32,7 +34,8 @@ class BooksApp extends Component {
         )}/>
 
         <Route path="/" exact render={() => (
-          <Main />
+          <Main
+            books={this.state.books} />
         )}/>
 
      </div>
