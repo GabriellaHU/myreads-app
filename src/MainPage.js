@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Book from './Book'
+import Shelf from './BookShelf'
 
 
 
 class Main extends Component {
 
-  state = {
-
-  }
-
 
   render() {
 
 
-
+    const shelfTypes = [
+      { id: 'read',
+        heading: 'Read'},
+      { id: 'currentlyReading',
+        heading: 'Currently Reading'},
+      { id:  'wantToRead',
+        heading: 'Want to Read'},
+      ]
 
     return (
 
@@ -25,72 +28,23 @@ class Main extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
 
-                  {this.props.currentBooks.map((book) => (
-                    <Book
-                      books={this.props.books}
-                      key={book.id}
-                      id={book.id}
-                      author={book.authors}
-                      title={book.title}
-                      thumbnail={book.imageLinks.thumbnail}
-                      moveBook={this.props.moveBook}
-                      />
 
-                    )
-                  )}
+          {shelfTypes.map((shelf) => (
 
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
+            <Shelf
+              books={this.props.books}
+              key={shelf.id}
+              shelf={shelf.id}
+              heading={shelf.heading}
+              currentBooks={this.props.currentBooks}
+              moveBook={this.props.moveBook}
+            />
+          )
 
-                {this.props.futureBooks.map((book) => (
-                  <Book
-                    books={this.props.books}
-                    key={book.id}
-                    id={book.id}
-                    author={book.authors}
-                    title={book.title}
-                    thumbnail={book.imageLinks.thumbnail}
-                    moveBook={this.props.moveBook}
-                  />
-                  )
-                )}
+        )}
 
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
 
-                {this.props.readBooks.map((book) => (
-                  <Book
-                    books={this.props.books}
-                    key={book.id}
-                    id={book.id}
-                    author={book.authors}
-                    title={book.title}
-                    thumbnail={book.imageLinks.thumbnail}
-                    moveBook={this.props.moveBook}
-
-                   />
-
-                  )
-                )}
-
-                </ol>
-              </div>
-            </div>
           </div>
         </div>
         <div className="open-search">
