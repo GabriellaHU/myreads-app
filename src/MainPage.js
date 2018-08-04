@@ -13,14 +13,11 @@ class Main extends Component {
 
   render() {
 
-     let readBooks = this.props.books.filter(book => book.shelf === 'read')
-     let currentBooks = this.props.books.filter(book => book.shelf === 'currentlyReading')
-     let futureBooks = this.props.books.filter(book => book.shelf === 'wantToRead')
 
-    {/* console.log(this.props.books) */}
 
 
     return (
+
 
       <div className="list-books">
         <div className="list-books-title">
@@ -33,8 +30,17 @@ class Main extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
 
-                  {currentBooks.map( (book) => (
-                    <Book key={book.id} author={book.authors} title={book.title} thumbnail={book.imageLinks.thumbnail} />
+                  {this.props.currentBooks.map((book) => (
+                    <Book
+                      books={this.props.books}
+                      key={book.id}
+                      id={book.id}
+                      author={book.authors}
+                      title={book.title}
+                      thumbnail={book.imageLinks.thumbnail}
+                      moveBook={this.props.moveBook}
+                      />
+
                     )
                   )}
 
@@ -46,8 +52,16 @@ class Main extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
 
-                {futureBooks.map( (book) => (
-                  <Book key={book.id} author={book.authors} title={book.title} thumbnail={book.imageLinks.thumbnail} />
+                {this.props.futureBooks.map((book) => (
+                  <Book
+                    books={this.props.books}
+                    key={book.id}
+                    id={book.id}
+                    author={book.authors}
+                    title={book.title}
+                    thumbnail={book.imageLinks.thumbnail}
+                    moveBook={this.props.moveBook}
+                  />
                   )
                 )}
 
@@ -59,8 +73,18 @@ class Main extends Component {
               <div className="bookshelf-books">
                 <ol className="books-grid">
 
-                {readBooks.map( (book) => (
-                  <Book key={book.id} author={book.authors} title={book.title} thumbnail={book.imageLinks.thumbnail} />
+                {this.props.readBooks.map((book) => (
+                  <Book
+                    books={this.props.books}
+                    key={book.id}
+                    id={book.id}
+                    author={book.authors}
+                    title={book.title}
+                    thumbnail={book.imageLinks.thumbnail}
+                    moveBook={this.props.moveBook}
+
+                   />
+
                   )
                 )}
 
