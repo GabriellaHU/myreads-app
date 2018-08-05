@@ -11,8 +11,8 @@ class Book extends Component {
 
   handleChange = (event) => {
     // console.log(event)
-    if (event.target.value !== this.state) {
-      this.props.moveBook(this.props.book, event.target.value)
+    if (event.target.value !== this.state.shelf) {
+      this.props.moveBook(this.props.book, event.target.value);
       this.setState({shelf: event.target.value})
     }
   }
@@ -34,6 +34,7 @@ class Book extends Component {
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url('${thumbnail}')` }}></div>
           <div className="book-shelf-changer">
               <Selector
+                key='selector'
                 book={this.props.book}
                 handleChange={this.handleChange}
                />
