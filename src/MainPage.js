@@ -37,7 +37,6 @@ class Main extends Component {
               key={shelf.id}
               shelf={shelf.id}
               heading={shelf.heading}
-              currentBooks={this.props.currentBooks}
               moveBook={this.props.moveBook}
             />
           )
