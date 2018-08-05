@@ -72,13 +72,13 @@ class BookSearch extends Component {
           <ol className="books-grid">
 
            {
-              {/*renders books to the SearchPage only if there are search results
-                otherwise renders a default message*/}
+              // renders books to the SearchPage only if there are search results
+              // otherwise renders a default message
               (filteredBooks.length > 0 ) ? (filteredBooks.map(filteredBook => {
 
                 let shelf
-                {/* compare book ID-s from the MainPage with ID-s from the SearchPage
-                    set the latter's shelf value to the former's */}
+                // compare book ID-s from the MainPage with ID-s from the SearchPage
+                // set the latter's shelf value to the former's
                 this.props.books.map(book => (
                   book.id === filteredBook.id ?
                   shelf = book.shelf : ''
