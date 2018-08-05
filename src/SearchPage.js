@@ -14,13 +14,13 @@ class BookSearch extends Component {
   updateQuery = (query) => {
     this.setState({ query })
     this.searchBooks(query)
-    console.log(query)
+    // console.log(query)
   }
 
   searchBooks(query) {
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
-      console.log(books)
+      // console.log(books)
       this.setState({filteredBooks: books})
       })
     } else {
@@ -29,6 +29,9 @@ class BookSearch extends Component {
   }
 
   render() {
+
+    let filteredBooks = this.state.filteredBooks
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -48,7 +51,25 @@ class BookSearch extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+
+          if (filteredBooks.length > 0) {
+            filteredBooks.map(book => {
+             return (
+              <Book
+                key={book.id}
+                book={book}
+                moveBook={this.props.moveBook}
+                />
+             )
+
+              }
+            )
+          }
+
+
+
+          </ol>
         </div>
       </div>
     )
