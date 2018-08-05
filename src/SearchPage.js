@@ -17,14 +17,18 @@ class BookSearch extends Component {
     // console.log(query)
   }
 
-  searchBooks(query) {
+  searchBooks = (query) => {
     if (query.length > 0) {
       BooksAPI.search(query).then(books => {
       // console.log(books)
-      this.setState({filteredBooks: books})
+      try { this.setState({filteredBooks: books})
+      } catch (error) {
+      // console.log(error)
+      this.setState({filteredBooks: []})
+    }
       })
     } else {
-      this.setState({filteredBooks: [] })
+      this.setState({filteredBooks: []})
     }
   }
 
@@ -53,18 +57,16 @@ class BookSearch extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
 
-          if (filteredBooks.length > 0) {
-            filteredBooks.map(book => {
-             return (
+           {
+            (filteredBooks.length > 0 ) ? (filteredBooks.map(book => (
               <Book
                 key={book.id}
                 book={book}
                 moveBook={this.props.moveBook}
                 />
              )
+           )) : 'Your search had no results.'
 
-              }
-            )
           }
 
 
