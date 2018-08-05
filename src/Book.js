@@ -9,13 +9,33 @@ class Book extends Component {
     shelf: 'none'
   }
 
+  componentDidMount() {
+    this.setShelf()
+  }
+
+  setShelf = () => {
+    if (this.props.book.shelf) {
+    this.setState({shelf: this.props.book.shelf})
+  } else if (this.props.shelf) {
+    this.setState({shelf: this.props.shelf})
+  } else {
+    this.setState({shelf: 'none'})
+  }
+
+  }
+
   handleChange = (event) => {
-    // console.log(event)
-    if (event.target.value !== this.state.shelf) {
+
+    if (this.props.book.shelf !== event.target.value) {
+      console.log(this.props.book);
+      console.log(this.state.shelf);
+      console.log(event.target.value);
       this.props.moveBook(this.props.book, event.target.value);
       this.setState({shelf: event.target.value})
     }
-  }
+
+    }
+
 
 
   render() {
@@ -37,6 +57,9 @@ class Book extends Component {
                 key='selector'
                 book={this.props.book}
                 handleChange={this.handleChange}
+                setShelf={this.setShelf}
+                shelf={this.props.book.shelf}
+                newShelf={this.state.shelf}
                />
           </div>
         </div>

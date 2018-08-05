@@ -8,8 +8,8 @@ class Shelf extends Component {
    render() {
 
 
-     const shelf = this.props.shelf;
-     const filteredBooks = this.props.books.filter(book => book.shelf === shelf);
+     const shelfType = this.props.shelf;
+     const filteredBooks = this.props.books.filter(book => book.shelf === shelfType);
      // console.log(filteredBooks)
 
 

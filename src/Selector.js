@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 function Selector (props) {
 
     return (
       <select
         onChange={props.handleChange}
-        value={props.book.shelf}
+        value={props.newShelf}
       >
         <option value="move" disabled>Move to...</option>
         <option value="currentlyReading">Currently Reading</option>

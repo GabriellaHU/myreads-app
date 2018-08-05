@@ -29,9 +29,11 @@ class BooksApp extends Component {
   }
 
   moveBook = (book, shelf) => {
-    BooksAPI.update(book, shelf);
+    BooksAPI.update(book, shelf).then(() => {
     this.getBooks()
+  })
     }
+
 
 
   render() {

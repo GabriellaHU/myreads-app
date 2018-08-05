@@ -11,6 +11,10 @@ class BookSearch extends Component {
     filteredBooks: []
   }
 
+  handleChange = (event) => {
+    this.updateQuery(event.target.value)
+  }
+
   updateQuery = (query) => {
     this.setState({ query })
     this.searchBooks(query)
@@ -49,7 +53,7 @@ class BookSearch extends Component {
               type="text"
               placeholder="Search by title or author"
               value={this.state.query}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              onChange={this.handleChange}
             />
 
           </div>
@@ -58,13 +62,24 @@ class BookSearch extends Component {
           <ol className="books-grid">
 
            {
-            (filteredBooks.length > 0 ) ? (filteredBooks.map(book => (
-              <Book
-                key={book.id}
-                book={book}
-                moveBook={this.props.moveBook}
+            (filteredBooks.length > 0 ) ? (filteredBooks.map(filteredBook => {
+
+              let shelf = ''
+
+              this.props.books.map(book => (
+                book.id === filteredBook.id ?
+                shelf = book.shelf : ''
+              ))
+
+              return (
+                <Book
+                  key={filteredBook.id}
+                  book={filteredBook}
+                  shelf ={shelf} 
+                  moveBook={this.props.moveBook}
                 />
-             )
+              )
+             }
            )) : 'Your search had no results.'
 
           }
