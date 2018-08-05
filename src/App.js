@@ -12,23 +12,11 @@ class BooksApp extends Component {
   state = {
 
     books: [],
-    readBooks: [],
-    currentBooks: [],
-    futureBooks: []
 
 }
 
-  sortBooks = () => {
-    this.setState({ readBooks: this.state.books.filter(book => book.shelf === 'read') });
-    this.setState({ currentBooks: this.state.books.filter(book => book.shelf === 'currentlyReading') });
-    this.setState({ futureBooks: this.state.books.filter(book => book.shelf === 'wantToRead') });
-
-    }
-
-
    componentDidMount() {
      this.getBooks()
-     this.sortBooks()
    }
 
   // loads books from the BooksAPI
@@ -41,11 +29,9 @@ class BooksApp extends Component {
   }
 
   moveBook = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() => {
+    BooksAPI.update(book, shelf);
     this.getBooks()
-    })
-  }
-
+    }
 
 
   render() {

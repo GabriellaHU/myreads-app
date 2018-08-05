@@ -8,12 +8,10 @@ class Book extends Component {
   }
 
   handleChange = (event) => {
+    // console.log(event)
     if (event.target.value !== this.state) {
-      this.setState({shelf: event.target.value});
-      this.props.moveBook(this, event.target.value)
-      console.log(event.target.value)
-      console.log(this)
-      console.log(this.state)
+      this.props.moveBook(this.props.book, event.target.value)
+      this.setState({shelf: event.target.value})
     }
   }
 
@@ -30,11 +28,11 @@ class Book extends Component {
     <li>
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.thumbnail}")` }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
           <div className="book-shelf-changer">
             <select
-              value={this.state.shelf}
               onChange={this.handleChange}
+
             >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
@@ -44,8 +42,8 @@ class Book extends Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{this.props.title}</div>
-        <div className="book-authors">{this.props.author}</div>
+        <div className="book-title">{this.props.book.title}</div>
+        <div className="book-authors">{this.props.book.authors}</div>
       </div>
     </li>
 

@@ -22,19 +22,19 @@ class Shelf extends Component {
          <div className="bookshelf-books">
            <ol className="books-grid">
 
-           {filteredBooks.map(book => (
+           {
+             filteredBooks.map(book => {
+              return (
                <Book
                  key={book.id}
-                 id={book.id}
-                 author={book.authors}
-                 title={book.title}
-                 thumbnail={book.imageLinks.thumbnail}
+                 book={book}
                  moveBook={this.props.moveBook}
-                 shelf={this.props.type}
                  />
+              )
 
-               )
-             )}
+               }
+             )
+           }
 
 
            </ol>
